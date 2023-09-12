@@ -1,0 +1,52 @@
+jobs:
+- job: Terraform
+  displayName: Terraform
+
+  steps:
+  - checkout: self
+
+  - bash: |
+      sudo apt-get install wget unzip -y
+      wget https://releases.hashicorp.com/terraform/1.5.6/terraform_1.5.6_linux_amd64.zip
+      unzip -o terraform*.zip
+      sudo mv terraform /usr/local/bin/
+      terraform --version
+    displayName: Install Terraform
+
+  - bash: |
+      terraform init \
+        -backend-config="resource_group_name=$(tf-state-resource-group)" \
+        -backend-config="storage_account_name=$(tf-state-storage-account)" \
+        -backend-config="container_name=$(tf-state-container)" \
+        -backend-config="key=$(tf-state-key)"
+    displayName: Terraform Init
+    workingDirectory: $(System.DefaultWorkingDirectory)/terraform
+    env:
+      ARM_ACCESS_KEY: $(ARM-ACCESS-KEY)
+      ARM_CLIENT_ID: $(ARM-CLIENT-ID)
+      ARM_CLIENT_SECRET: $(ARM-CLIENT-SECRET)
+      ARM_SUBSCRIPTION_ID: $(ARM-SUBSCRIPTION-ID)
+      ARM_TENANT_ID: $(ARM-TENANT-ID)
+
+  - bash: |
+      terraform plan -input=false
+    displayName: Terraform Plan
+    workingDirectory: $(System.DefaultWorkingDirectory)/terraform
+    env:
+      ARM_ACCESS_KEY: $(ARM-ACCESS-KEY)
+      ARM_CLIENT_ID: $(ARM-CLIENT-ID)
+      ARM_CLIENT_SECRET: $(ARM-CLIENT-SECRET)
+      ARM_SUBSCRIPTION_ID: $(ARM-SUBSCRIPTION-ID)
+      ARM_TENANT_ID: $(ARM-TENANT-ID)
+
+  - bash: |
+      terraform apply -input=false -auto-approve
+    displayName: Terraform Apply
+    workingDirectory: $(System.DefaultWorkingDirectory)/terraform
+    env:
+      ARM_ACCESS_KEY: $(ARM-ACCESS-KEY)
+      ARM_CLIENT_ID: $(ARM-CLIENT-ID)
+      ARM_CLIENT_SECRET: $(ARM-CLIENT-SECRET)
+      ARM_SUBSCRIPTION_ID: $(ARM-SUBSCRIPTION-ID)
+      ARM_TENANT_ID: $(ARM-TENANT-ID)
+

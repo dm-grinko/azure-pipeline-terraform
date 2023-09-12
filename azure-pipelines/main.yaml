@@ -1,0 +1,19 @@
+name: $(BuildID)
+
+trigger:
+  branches:
+    include:
+    - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - group: secrets
+
+stages:
+- stage: Terraform
+  displayName: Terraform
+  jobs:
+  - template: terraform.yaml
+
