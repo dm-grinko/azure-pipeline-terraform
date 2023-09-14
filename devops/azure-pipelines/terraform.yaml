@@ -4,6 +4,7 @@ jobs:
 
   steps:
   - checkout: self
+    displayName: Checkout
 
   - bash: |
       sudo apt-get install wget unzip -y
@@ -12,6 +13,7 @@ jobs:
       sudo mv terraform /usr/local/bin/
       terraform --version
     displayName: Install Terraform
+    dependsOn: Checkout
 
   - bash: |
       terraform init \
@@ -20,6 +22,7 @@ jobs:
         -backend-config="container_name=$(tf-state-container)" \
         -backend-config="key=$(tf-state-key)"
     displayName: Terraform Init
+    dependsOn: Install Terraform
     workingDirectory: $(System.DefaultWorkingDirectory)/terraform
     env:
       ARM_ACCESS_KEY: $(ARM-ACCESS-KEY)
@@ -31,6 +34,7 @@ jobs:
   - bash: |
       terraform plan -input=false
     displayName: Terraform Plan
+    dependsOn: Terraform Init
     workingDirectory: $(System.DefaultWorkingDirectory)/terraform
     env:
       ARM_ACCESS_KEY: $(ARM-ACCESS-KEY)
@@ -42,6 +46,7 @@ jobs:
   - bash: |
       terraform apply -input=false -auto-approve
     displayName: Terraform Apply
+    dependsOn: Terraform Plan
     workingDirectory: $(System.DefaultWorkingDirectory)/terraform
     env:
       ARM_ACCESS_KEY: $(ARM-ACCESS-KEY)
