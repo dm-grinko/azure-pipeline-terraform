@@ -1,9 +1,7 @@
 name: $(BuildID)
 
-trigger:
-  branches:
-    include:
-    - master
+trigger: none
+#   - master
 
 pool:
   vmImage: 'ubuntu-latest'
