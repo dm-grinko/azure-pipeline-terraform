@@ -1,6 +1,8 @@
 jobs:
 - job: Terraform
   displayName: Terraform
+  pool:
+    vmImage: 'ubuntu-latest'
 
   steps:
   - checkout: self

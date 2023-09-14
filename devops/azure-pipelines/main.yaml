@@ -1,17 +1,13 @@
 name: $(BuildID)
 
 trigger: none
-  # - master
-
-pool:
-  vmImage: 'ubuntu-latest'
 
 variables:
   - group: secrets
 
 stages:
-- stage: Terraform
-  displayName: Terraform
+- stage: CI
+  displayName: CI stage
   jobs:
   - template: terraform.yaml
-
+  - template: build.yaml
