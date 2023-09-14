@@ -32,23 +32,15 @@ locals {
   az_key_vault_name = "${var.prefix}${random_integer.suffix.result}"
 
   pipeline_variables = {
-    tf-state-resource-group = var.az_location
+    tf-state-resource-group = "eastus"
     tf-state-storage-account = azurerm_storage_account.sa.name
-    tf-state-container = var.az_container_name
-    tf-state-key = var.az_state_key
+    tf-state-container = "terraform-state"
+    tf-state-key = "terraform.tfstate"
     ARM-ACCESS-KEY = data.azurerm_storage_account_sas.state.sas
     ARM-CLIENT-ID = azuread_application.resource_creation.application_id
     ARM-CLIENT-SECRET = azuread_service_principal_password.resource_creation.value
     ARM-SUBSCRIPTION-ID = data.azurerm_client_config.current.subscription_id
     ARM-TENANT-ID = data.azurerm_client_config.current.tenant_id
-    # storageaccount = azurerm_storage_account.sa.name
-    # container-name = var.az_container_name
-    # key = var.az_state_key
-    # sas-token = data.azurerm_storage_account_sas.state.sas
-    # az-client-id = azuread_application.resource_creation.application_id
-    # az-client-secret = azuread_service_principal_password.resource_creation.value
-    # az-subscription = data.azurerm_client_config.current.subscription_id
-    # az-tenant = data.azurerm_client_config.current.tenant_id
   }
 
   azad_service_connection_sp_name = "${var.prefix}-service-connection-${random_integer.suffix.result}"
