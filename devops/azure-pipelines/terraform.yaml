@@ -15,6 +15,7 @@ jobs:
     displayName: Install Terraform
 
   - bash: |
+      echo $(System.DefaultWorkingDirectory)/devops/terraform && \
       terraform init \
         -backend-config="resource_group_name=$(tf-state-resource-group)" \
         -backend-config="storage_account_name=$(tf-state-storage-account)" \
