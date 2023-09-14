@@ -4,15 +4,15 @@ jobs:
 
   steps:
   - bash: |
-      echo "tf-state-resource-group: ${tf-state-resource-group:0:1} ${tf-state-resource-group:0:100}"
-      echo "tf-state-storage-account: ${tf-state-storage-account:0:1} ${tf-state-storage-account:0:100}"
-      echo "tf-state-container: ${tf-state-container:0:1} ${tf-state-container:0:100}"
-      echo "tf-state-key: ${tf-state-key:0:1} ${tf-state-key:0:100}"
-      echo "ARM-ACCESS-KEY: ${ARM-ACCESS-KEY:0:1} ${ARM-ACCESS-KEY:0:100}"
-      echo "ARM-CLIENT-ID: ${ARM-CLIENT-ID:0:1} ${ARM-CLIENT-ID:0:100}"
-      echo "ARM-CLIENT-SECRET: ${ARM-CLIENT-SECRET:0:1} ${ARM-CLIENT-SECRET:0:100}"
-      echo "ARM-SUBSCRIPTION-ID: ${ARM-SUBSCRIPTION-ID:0:1} ${ARM-SUBSCRIPTION-ID:0:100}"
-      echo "ARM-TENANT-ID: ${ARM-TENANT-ID:0:1} ${ARM-TENANT-ID:0:100}"
+      echo "tf-state-resource-group: $(tf-state-resource-group:0:1) $(tf-state-resource-group:0:100)"
+      echo "tf-state-storage-account: $(tf-state-storage-account:0:1) $(tf-state-storage-account:0:100)"
+      echo "tf-state-container: $(tf-state-container:0:1) $(tf-state-container:0:100)"
+      echo "tf-state-key: $(tf-state-key:0:1) $(tf-state-key:0:100)"
+      echo "ARM-ACCESS-KEY: $(ARM-ACCESS-KEY:0:1) $(ARM-ACCESS-KEY:0:100)"
+      echo "ARM-CLIENT-ID: $(ARM-CLIENT-ID:0:1) $(ARM-CLIENT-ID:0:100)"
+      echo "ARM-CLIENT-SECRET: $(ARM-CLIENT-SECRET:0:1) $(ARM-CLIENT-SECRET:0:100)"
+      echo "ARM-SUBSCRIPTION-ID: $(ARM-SUBSCRIPTION-ID:0:1) $(ARM-SUBSCRIPTION-ID:0:100)"
+      echo "ARM-TENANT-ID: $(ARM-TENANT-ID:0:1) $(ARM-TENANT-ID:0:100)"
     displayName: Print variables
 
   - checkout: self
