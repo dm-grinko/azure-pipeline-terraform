@@ -5,15 +5,7 @@ jobs:
   steps:
   - bash: |
       export TF_LOG="DEBUG"
-      echo "tf-state-resource-group: $tf-state-resource-group"
-      echo "tf-state-storage-account: $tf-state-storage-account"
-      echo "tf-state-container: $tf-state-container"
-      echo "tf-state-key: $tf-state-key"
-      echo "ARM-ACCESS-KEY: $ARM-ACCESS-KEY"
-      echo "ARM-CLIENT-ID: $ARM-CLIENT-ID"
-      echo "ARM-CLIENT-SECRET: $ARM-CLIENT-SECRET"
-      echo "ARM-SUBSCRIPTION-ID: $ARM-SUBSCRIPTION-ID"
-      echo "ARM-TENANT-ID: $ARM-TENANT-ID"
+      printenv
     displayName: Print variables
 
   - checkout: self
