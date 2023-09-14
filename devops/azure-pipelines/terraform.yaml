@@ -16,7 +16,7 @@ jobs:
 
   - bash: |
       echo $(System.DefaultWorkingDirectory)/devops/terraform && \
-      terraform init \
+      terraform init --upgrade \
         -backend-config="resource_group_name=$(tf-state-resource-group)" \
         -backend-config="storage_account_name=$(tf-state-storage-account)" \
         -backend-config="container_name=$(tf-state-container)" \
