@@ -4,10 +4,10 @@ jobs:
 
   steps:
   - bash: |
-      echo "$(tf-state-resource-group)"
-      echo "$(tf-state-storage-account)"
-      echo "$(tf-state-container)"
-      echo "$(tf-state-key)"
+      echo "$(tf-state-resource-group).ToCharArray()"
+      echo "$(tf-state-storage-account).ToCharArray()"
+      echo "$(tf-state-container).ToCharArray()"
+      echo "$(tf-state-key).ToCharArray()"
 
       echo "$(ARM-ACCESS-KEY)"
       echo "$(ARM-CLIENT-ID)"
