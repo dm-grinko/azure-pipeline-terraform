@@ -21,7 +21,7 @@ resource "azurerm_key_vault_access_policy" "you" {
   object_id = data.azurerm_client_config.current.object_id
 
   secret_permissions = [
-    "get", "list", "set", "delete", "purge", "recover", "backup"
+    "Get", "List", "Set", "Delete", "Purge", "Recover", "Backup"
   ]
 }
 
@@ -32,7 +32,7 @@ resource "azurerm_key_vault_access_policy" "pipeline" {
   tenant_id = data.azurerm_client_config.current.tenant_id
   object_id = azuread_service_principal.service_connection.object_id
 
-  secret_permissions = ["get", "list"]
+  secret_permissions = ["Get", "List"]
 }
 
 # Populate with secrets to be used by the pipeline
