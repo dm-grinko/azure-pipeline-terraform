@@ -3,14 +3,27 @@ jobs:
   displayName: Terraform
 
   steps:
+  - bash: |
+      echo "$(tf-state-resource-group)"
+      echo "$(tf-state-storage-account)"
+      echo "$(tf-state-container)"
+      echo "$(tf-state-key)"
+
+      echo "$(ARM-ACCESS-KEY)"
+      echo "$(ARM-CLIENT-ID)"
+      echo "$(ARM-CLIENT-SECRET)"
+      echo "$(ARM-SUBSCRIPTION-ID)"
+      echo "$(ARM-TENANT-ID)"
+    displayName: Print variables
+
   - checkout: self
     displayName: Checkout repository
 
   - bash: |
-      sudo apt-get install wget unzip -y && \
-      wget https://releases.hashicorp.com/terraform/1.5.6/terraform_1.5.6_linux_amd64.zip && \
-      unzip -o terraform*.zip && \
-      sudo mv terraform /usr/local/bin/ && \
+      sudo apt-get install wget unzip -y
+      wget https://releases.hashicorp.com/terraform/1.5.6/terraform_1.5.6_linux_amd64.zip
+      unzip -o terraform*.zip
+      sudo mv terraform /usr/local/bin/
       terraform --version
     displayName: Install Terraform
 
