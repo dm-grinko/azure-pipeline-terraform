@@ -7,6 +7,12 @@ jobs:
       export TF_LOG="DEBUG"
       printenv
     displayName: Print variables
+    env:
+      ARM_ACCESS_KEY: $(ARM-ACCESS-KEY)
+      ARM_CLIENT_ID: $(ARM-CLIENT-ID)
+      ARM_CLIENT_SECRET: $(ARM-CLIENT-SECRET)
+      ARM_SUBSCRIPTION_ID: $(ARM-SUBSCRIPTION-ID)
+      ARM_TENANT_ID: $(ARM-TENANT-ID)
 
   - checkout: self
     displayName: Checkout repository
