@@ -36,7 +36,7 @@ locals {
     tf-state-storage-account = azurerm_storage_account.sa.name
     tf-state-container = "terraform-state"
     tf-state-key = "terraform.tfstate"
-    ARM-ACCESS-KEY = data.azurerm_storage_account.sa.primary_access_key
+    ARM-ACCESS-KEY = "D4ck1GHGNbGZMsTRQ0sTReb4ROin4uKZoJtHXdUHUet6dh8AMnLm4KUCDekibK9/uFc9miOjqEiN+AStBVfn4g=="
     ARM-CLIENT-ID = azuread_application.resource_creation.application_id
     ARM-CLIENT-SECRET = azuread_service_principal_password.resource_creation.value
     ARM-SUBSCRIPTION-ID = data.azurerm_subscription.current.subscription_id

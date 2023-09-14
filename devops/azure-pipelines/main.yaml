@@ -7,7 +7,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  - group: secrets2
+  - group: secrets
 
 stages:
 - stage: Terraform
